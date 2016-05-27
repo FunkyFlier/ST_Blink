@@ -44,9 +44,21 @@ int main(void) {
 
     /* 150ms with autoreload enabled, and start after it is created */
     SWTIM2 = TM_DELAY_TimerCreate(150, 1, 1, SWTIM2_Callback, NULL);
-
+    TM_DISCO_LedOff(LED_ORANGE);
+	TM_DISCO_LedOn(LED_BLUE);
     while (1) {
-        /* Do nothing */
+        /* Turn off ALL leds */
+    	TM_DISCO_LedToggle(LED_ORANGE);
+    	TM_DISCO_LedToggle(LED_BLUE);
+         /* If button pressed */
+         if (TM_DISCO_ButtonPressed()) {
+             /* Delayms */
+             Delayms(1000);
+         } else {
+             /* Delayus */
+             Delay(100000);
+         }
+
         /* Everything is performed in stm32fxxx_it.c function where callback functions are called for software timers */
     }
 }
