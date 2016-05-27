@@ -27,13 +27,15 @@ int main(void) {
     TM_DELAY_Init();
 
     while (1) {
+    	Delay(500000);
+
+    	TM_DISCO_LedToggle(LED_ALL);
         /* Each 500ms */
-        if (TM_DELAY_Time() >= 500) {
-            /* Reset time */
+        /*if (TM_DELAY_Time() >= 500) {
             TM_DELAY_SetTime(0);
 
-            /* Toggle LED */
+
             TM_DISCO_LedToggle(LED_ALL);
-        }
+        }*/
     }
 }
